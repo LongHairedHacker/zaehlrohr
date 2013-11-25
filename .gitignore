@@ -1,2 +1,5 @@
 *.bak
 *.000
+.depends
+*.o
+*.elf
