@@ -10,7 +10,7 @@ Its aim is to count the capsules which are being send to and from a switching no
 This is done by attaching two light barriers to each tube
 connecting the switching node with its neighbors.
 As a by-product this setup also provides the possibility to calculate speed of each capsule.
-All measurements will be aggregated to node status website.
+All measurements will be aggregated to a node status website.
 
 Technical details
 -----------------
