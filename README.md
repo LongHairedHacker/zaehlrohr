@@ -10,22 +10,22 @@ Its aim is to count the capsules which are being send to and from a switching no
 This is done by attaching two light barriers to each tube
 connecting the switching node with its neighbors.
 As a by-product this setup also provides the possibility to calculate speed of each capsule.
-All measurements will be aggregated to node status website.
+All measurements will be aggregated to a node status website.
 
 Technical details
 -----------------
 The capsule detection is done by two super bright leds and two photo resistors
 attached to the outside of a tube.
-Drilling holes into the tube is not necessary since the is just transparent enough.
+Drilling holes into the tube is not necessary since it is just transparent enough.
 
 The signals of the photo resistors will be preprocessed by a simple operational amplifier circuit.
 First a capacitor is used to filter out any DC-offset on the signal caused by ambient light.
 After that the signal may still contain noise,
 like the 50Hz sine produced by fluorescent light tubes.
 Therefore a comparator is used to filter out this noise floor below a configurable threshold voltage.
-It also amplifies anything above the threshold to 5v, leaving us with a AVR friendly 0v or 5v signal.
+It also amplifies anything above the threshold to 5v, leaving us with a AVR friendly 0v to 5v signal.
 The passing capsule will usually decrease the voltage coming from the photo resistor about 1v.
-Therefore the threshold should be chose between 0,2v and 5v.
+Therefore the threshold should be chose between 0,2v and 1,2v.
 
 The output of each comparator circuit is directly attached to the digital IO-Pins of a AVR based
 micro controller board (e.g. a Kaboard).
