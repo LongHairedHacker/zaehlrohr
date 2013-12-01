@@ -1,0 +1,143 @@
+Cmp-Mod V01 Created by CvPcb (2013-may-18)-stable date = Sun 01 Dec 2013 09:21:39 PM CET
+
+BeginCmp
+TimeStamp = /528BD33D;
+Reference = C1;
+ValeurCmp = 100nf;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BCF11;
+Reference = C2;
+ValeurCmp = 100nf;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD74C;
+Reference = C3;
+ValeurCmp = 100nF;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD76A;
+Reference = C4;
+ValeurCmp = 47uF;
+IdModule  = C1V7;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD5D0;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD711;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD6F6;
+Reference = D3;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /529B93E0;
+Reference = K1;
+ValeurCmp = CONN_3;
+IdModule  = bornier3;
+EndCmp
+
+BeginCmp
+TimeStamp = /529B9586;
+Reference = K2;
+ValeurCmp = CONN_3;
+IdModule  = bornier3;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD3A2;
+Reference = P1;
+ValeurCmp = CONN_4;
+IdModule  = bornier4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD337;
+Reference = R1;
+ValeurCmp = 68k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BCF02;
+Reference = R2;
+ValeurCmp = R;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD343;
+Reference = R3;
+ValeurCmp = 270k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BCF20;
+Reference = R4;
+ValeurCmp = 270k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD5E9;
+Reference = R5;
+ValeurCmp = 270;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD717;
+Reference = R6;
+ValeurCmp = 270;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD6FC;
+Reference = R7;
+ValeurCmp = 270;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD379;
+Reference = RV1;
+ValeurCmp = 10k;
+IdModule  = trimmer_piher_pt6xh;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD14F;
+Reference = RV2;
+ValeurCmp = 10k;
+IdModule  = trimmer_piher_pt6xh;
+EndCmp
+
+BeginCmp
+TimeStamp = /528BD001;
+Reference = U1;
+ValeurCmp = LM358N;
+IdModule  = DIP-8__300_ELL;
+EndCmp
+
+EndListe
