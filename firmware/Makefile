@@ -56,7 +56,7 @@ flash : all
         -U flash:w:$(OBJDIR)/$(TARGET).hex 
 
 
-.depends: *.c *.h
+.depends: *.c *.h Makefile
 	$(CC) $(CFLAGS) -M $+ > .depends
 
 -include .depends

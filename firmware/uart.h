@@ -6,7 +6,8 @@
 #include  <util/delay.h>
 
 
-#define BAUD 76800UL		// baudrate
+//#define BAUD 76800UL		// baudrate
+#define BAUD 9600UL
 #define UART_TIMEOUT 100	// Timeout in ms
 
 // Some calculations ...
@@ -78,6 +79,7 @@ static inline uint8_t uart_getc_timeout(void) {
 	uart_timed_out = 1;
 	return 0;
 }
+
 
 
 
