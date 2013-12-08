@@ -13,8 +13,10 @@ int main(void) {
 	timer_init();
 	uart_init();
 
-	//sei();
-
+	/* Quick and dirty initial time synchronization
+	 *TODO: replace with something robust 
+	 *  ----- snipp -----
+	 */ 
 	char tmp[12];
 
 	uint8_t c = 0;
@@ -31,11 +33,10 @@ int main(void) {
 		}
 	}
 	tmp[11] = 0;
-
-	uart_putc('\n');
-	
 	uint32_t startime = strtoul(tmp,NULL,10);
 	timer_set(startime);
+
+	//   ----- snapp -----
 
 	sei();
 
@@ -50,6 +51,8 @@ int main(void) {
 			uart_puts("Sensor 2\n");
 		}
 		*/
+
+		// This is only testcode for debugging the timer
 
 		uart_puts("timestamp: ");
 

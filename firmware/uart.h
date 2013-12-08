@@ -7,7 +7,7 @@
 
 
 //#define BAUD 76800UL		// baudrate
-#define BAUD 9600UL
+#define BAUD 38400UL
 #define UART_TIMEOUT 100	// Timeout in ms
 
 // Some calculations ...

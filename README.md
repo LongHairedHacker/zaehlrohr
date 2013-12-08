@@ -1,4 +1,4 @@
-Zaehlrohr
+Zählrohr
 =========
 
 TLDR;
@@ -31,10 +31,11 @@ The output of each comparator circuit is directly attached to the digital IO-Pin
 micro controller board (e.g. a Kaboard).
 The board calculates direction and speed of each capsule and sends the data to a beagle bone using a 
 simple usb uart bridge.
-The datasets will be saved in database for easier aggregation.
-A cronjob will then be used to provide aggregated data (capsules per time, 
-minimum, maximum and average speed) as an html file.
-There will also be a json file containing raw datasets for each capsule for anyone who wants to provide
-an alternative frontend.
-The files will then be uploaded to a web server from which the can be accessed by the rest of the universe.
+The datasets will be saved in database for easier aggregation, by a javascript running under nodejs.
+The aggregated data (capsules per time, total numbers of capsules, minimum, maximum and average speed ...),
+will be accessible via HTTP as json data.
+There will also be website that displays the data as nice graphs using chart.js.
+In case the beaglebone has not enough power to serve all requests,
+an additional webservers can be used as reverse proxies.
+
  
