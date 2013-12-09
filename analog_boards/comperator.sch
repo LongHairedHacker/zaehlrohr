@@ -36,7 +36,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "1 dec 2013"
+Date "9 dec 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -671,4 +671,24 @@ Wire Wire Line
 	3550 6550 3550 5700
 Text Notes 2300 3500 0    60   ~ 0
 to LDR and LED
+Wire Notes Line
+	5700 4050 5850 4200
+Wire Notes Line
+	5700 4050 5700 4100
+Wire Notes Line
+	5700 4050 5750 4050
+Text Notes 6800 4200 0    60   ~ 0
+Base settings, verified by  experiment:\n- for Vcc = 5V  set it to  0.3V\n- for Vcc = 3.3V set it to 0.18V
+Wire Notes Line
+	5850 4200 6750 4200
+Wire Notes Line
+	5700 6150 5850 6300
+Wire Notes Line
+	5700 6150 5700 6200
+Wire Notes Line
+	5700 6150 5750 6150
+Text Notes 6800 6300 0    60   ~ 0
+Base settings, verified by  experiment:\n- for Vcc = 5V  set it to  0.3V\n- for Vcc = 3.3V set it to 0.18V\n
+Wire Notes Line
+	5850 6300 6750 6300
 $EndSCHEMATC
