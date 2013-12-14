@@ -13,17 +13,17 @@ Naming conventions
   Therefore both representations are provided.
 
 * Tube names: A tube is named after its endpoints.
-  The name scheme looks like this "<endpoint1>-<endpoint2>".
+  The name scheme looks like this "<end point 1> - <end point 2>".
   With the endpoint names sorted in alphabetical order.
   E.g. the Tube connecting C to A is names "A-C".
 
 * Stream names: Streams are named after their endpoints as well.
-  The name scheme is "<source>-<destination>".
+  The name scheme is "<source endpoint>-<destination endpoint>".
 
 Summary
 -------
 * Provides combined statistics for all tubes equipped with sensors
-* URL: <server>/summary
+* URL: [server]/summary
 ```
 {
 	"StartTimestamp" : <timestamp of the first event in the database>,
@@ -74,9 +74,10 @@ Summary
 Interval values
 ---------------
 * Provides values aggregated over intervals
-* URL: <server>/<name>/<interval>/
+* URL: [server]/[name]/[interval]/
 * name: can be any valid tube or stream name
 * interval: can be minute, hour, day
+
 ```
 [
 	{
@@ -98,7 +99,8 @@ Interval values
 Raw events
 ----------
 * Provides all raw samples in case you want to analyze the data yourself
-* URL: <server>/raw
+* URL: [server]/raw
+
 ```
 [
 	{
