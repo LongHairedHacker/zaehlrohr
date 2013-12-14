@@ -13,12 +13,12 @@ Naming conventions
   Therefore both representations are provided.
 
 * Tube names: A tube is named after its endpoints.
-  The name scheme looks like this "<end point 1> - <end point 2>".
+  The name scheme looks like this "[end point 1]-[end point 2]".
   With the endpoint names sorted in alphabetical order.
   E.g. the Tube connecting C to A is names "A-C".
 
 * Stream names: Streams are named after their endpoints as well.
-  The name scheme is "<source endpoint>-<destination endpoint>".
+  The name scheme is "[source endpoint]-[destination endpoint]".
 
 Summary
 -------
