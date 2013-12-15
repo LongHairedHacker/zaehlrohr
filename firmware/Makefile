@@ -1,10 +1,10 @@
 AVRMCU = atmega8
 F_CPU = 16000000
-ISPPORT = /dev/ttyUSB0
+ISPPORT = /dev/kaboard
 
 VERSION = 0.1
 
-SRC = main.c
+SRC = main.c uart.c
 TARGET = zahlrohr-$(AVRMCU)
 OBJDIR = bin
 
@@ -56,7 +56,7 @@ flash : all
         -U flash:w:$(OBJDIR)/$(TARGET).hex 
 
 
-.depends: *.c *.h Makefile
+.depends: *.c *.h 
 	$(CC) $(CFLAGS) -M $+ > .depends
 
 -include .depends

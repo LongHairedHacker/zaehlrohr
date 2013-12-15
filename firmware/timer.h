@@ -7,10 +7,15 @@ uint16_t milliseconds;
 
 /*
  * Timer setting:
- * MCU runs at 16MHz
+ * MCU running at 16MHz:
  * Prescaler is 64 which results in 250000 ticks per second
  * Preloading the counter with 6 leads to 1000 overflow interrupts per second
- * or one overflow every millisecond
+ * or one overflow every millisecond.
+ *
+ * MCU running at 7.372800Mhz
+ * Prescaler is 256 which results in 28800 ticks per second.
+ * Preloading the counter with 112 leads to 200 overflow interrupts per second
+ * or one overflow every 5 milliseconds.
  */
 
 inline void timer_init(void) {

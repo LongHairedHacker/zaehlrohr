@@ -1,8 +1,8 @@
 var serialport = require('serialport')
 
-var initialTimer;
+var syncRetryTimer;
 
-var serialPort = new serialport.SerialPort('/tmp/ttyTest1', {
+var serialPort = new serialport.SerialPort('/dev/kaboard', {
   'baudrate' : 38400,
   'databits' : 8,
   'stopbits' : 1,
@@ -19,24 +19,26 @@ var startTimestamp = 0;
 
 function onData(data) {
 	console.log('data received: ' + data);
+
+	if(data == "Sync ack") {
+		clearInterval(syncRetryTimer);
+	}
+
 	var timestamp = parseInt(data.substr(11,10));
 	var seconds = getSencondsTimestamp();
 	console.log('difference: ' + (timestamp - seconds) + ' over ' + (seconds - startTimestamp));
-
-
-	clearInterval(initialTimer);
 }
 
-function setTime() {
+function syncTime() {
 	startTimestamp = getSencondsTimestamp();
-	console.log('Setting inital Time: ' + startTimestamp);
-	serialPort.write(startTimestamp + '\n');
+	console.log('Syncing Time: ' + startTimestamp);
+	serialPort.write('Set ' + startTimestamp + '\n');
 }
 
 function onOpen() {
 	console.log('Port is open');
 	serialPort.on('data',onData);
-	initialTimer = setInterval(setTime,100);
+	syncRetryTimer = setInterval(syncTime,100);
 }
 
 serialPort.on('open', onOpen);
