@@ -21,7 +21,7 @@
   #error Baudrate error is bigger then 1% !
 #endif
 
-uint8_t uart_timed_out;
+extern uint8_t uart_timed_out;
 
 void uart_init(void);
 uint8_t uart_getc_timeout(void);

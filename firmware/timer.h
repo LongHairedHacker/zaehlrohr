@@ -1,9 +1,16 @@
+#ifndef TIMER_H_
+#define TIMER_H_ TIMER_H_
+
+
 #include <avr/io.h>
 #include <avr/interrupt.h> 
 #include <stdint.h>
 
-uint32_t timestamp;
-uint16_t milliseconds;
+#include "fifo.h"
+#include "tubes.h"
+
+extern uint32_t timestamp;
+extern uint16_t milliseconds;
 
 /*
  * Timer setting:
@@ -18,7 +25,7 @@ uint16_t milliseconds;
  * or one overflow every 5 milliseconds.
  */
 
-inline void timer_init(void) {
+static inline void timer_init(void) {
 	TCNT0 = 6;	//Preload for 250 ticks to overflow
 	TIMSK |= (1 << TOIE0);
 	TCCR0 = (1 << CS00) | (1 << CS01);	// Prescaler 64 
@@ -26,7 +33,7 @@ inline void timer_init(void) {
 	milliseconds = 0;
 }
 
-inline void timer_set(uint32_t stamp) {
+static inline void timer_set(uint32_t stamp) {
 	TCCR0 &= ~((1 << CS00) | (1 << CS01)); // stop the timer
 
 	TCNT0 = 6;	//Preload for 250 ticks to overflow
@@ -37,12 +44,4 @@ inline void timer_set(uint32_t stamp) {
 }
 
 
-ISR(TIMER0_OVF_vect) {
-	TCNT0 = 6; //Preload for 250 ticks to overflow
-
-	milliseconds++;
-	if(milliseconds > 999) {
-		timestamp++;
-		milliseconds = 0;
-	}
-}
+#endif 

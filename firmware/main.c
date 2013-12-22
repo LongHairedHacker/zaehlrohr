@@ -3,12 +3,13 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "tubes.h"
 #include "uart.h"
 #include "timer.h"
 
 
-enum state_t {RESET, RUNNING, WAITACK};
 
+enum state_t {RESET, RUNNING, WAITACK};
 
 
 void syncTime(const char* buffer) {
@@ -93,10 +94,11 @@ enum state_t state_waitack(void) {
 
 
 int main(void) {
-	DDRC |= (1 << PC0);
+	DDRC |= (1 << PC0) | (1 << PC1) | (1 << PC2);
 
 	enum state_t state = RESET;
 
+	tubes_init();
 	timer_init();
 	uart_init();
 
@@ -109,7 +111,6 @@ int main(void) {
 				state = state_reset();
 				break;
 			case RUNNING:
-				PORTC ^= (1 << PC0);
 				state = state_running();
 			break;
 			case WAITACK:
@@ -117,36 +118,6 @@ int main(void) {
 			break;
 		}
 
-		/*
-		if(PINB & (1 << PB2)) {
-			uart_puts("Sensor 1\n");
-		}
-
-		if(PINB & (1 << PB3)) {
-			uart_puts("Sensor 2\n");
-		}
-		*/
-
-		// This is only testcode for debugging the timer
-		/*
-		uart_puts("timestamp: ");
-
-		ultoa(timestamp,buffer,10);
-		buffer[11] = 0;
-		uart_puts(buffer);
-
-		uart_putc(':');
-
-		utoa(milliseconds,buffer,10);
-		buffer[11] = 0;
-		uart_puts(buffer);
-
-		uart_puts("\n");
-
-		for(i = 0; i < 250; i++) {
-        	_delay_ms(1);
-		}
-		*/
 	}
 	
 }

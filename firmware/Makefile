@@ -1,10 +1,11 @@
 AVRMCU = atmega8
 F_CPU = 16000000
-ISPPORT = /dev/kaboard
+ISPPORT = /dev/ttyUSB0
 
 VERSION = 0.1
 
-SRC = main.c uart.c
+HEADERS = uart.h timer.h tubes.h fifo.h
+SRC = main.c uart.c timer.c tubes.c fifo.c
 TARGET = zahlrohr-$(AVRMCU)
 OBJDIR = bin
 
@@ -21,7 +22,7 @@ CFLAGS += -fshort-enums -fpack-struct -funsigned-char -funsigned-bitfields
 CFLAGS += -mmcu=$(AVRMCU) -DF_CPU=$(F_CPU)UL -DVERSION=$(VERSION)
 
 
-all: start .depends $(OBJDIR)/$(TARGET).hex size
+all: start $(OBJDIR)/$(TARGET).hex size
 	@echo ":: Done !"
 	
 start:
@@ -30,7 +31,7 @@ start:
 	@echo ":: Building for $(AVRMCU)"
 	@echo ":: MCU operating frequency is $(F_CPU)Hz"
 	
-$(OBJDIR)/%.o : %.c
+$(OBJDIR)/%.o : %.c $(HEADERS)
 	@mkdir -p $$(dirname $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -48,15 +49,8 @@ size : $(OBJDIR)/$(TARGET).elf
 	
 clean :
 	@rm -rf $(OBJDIR)
-	@rm .depends
 	
 flash : all
 	avrdude -c arduino \
 		-p $(AVRMCU) -P $(ISPPORT) \
         -U flash:w:$(OBJDIR)/$(TARGET).hex 
-
-
-.depends: *.c *.h 
-	$(CC) $(CFLAGS) -M $+ > .depends
-
--include .depends
