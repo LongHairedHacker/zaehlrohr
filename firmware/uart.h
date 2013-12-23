@@ -10,7 +10,7 @@
 
 //#define BAUD 76800UL		// baudrate
 #define BAUD 38400UL
-#define UART_TIMEOUT 25		// Timeout in ms
+#define UART_TIMEOUT 100	// Timeout in ms
 
 // Some calculations ...
 #define UBRR_VAL ((F_CPU+BAUD*8)/(BAUD*16)-1)   // Rounding magic

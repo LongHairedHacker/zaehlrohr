@@ -2,101 +2,105 @@
 #include <util/delay.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "tubes.h"
 #include "uart.h"
 #include "timer.h"
+#include "fifo.h"
 
+#define OUTPUTBUFFER_SIZE 64
+#define INPUTBUFFER_SIZE 32
 
+enum {RESET, RUNNING, WAITACK} state;
+char outputbuffer[OUTPUTBUFFER_SIZE];
+char inputbuffer[INPUTBUFFER_SIZE];
 
-enum state_t {RESET, RUNNING, WAITACK};
-
-
-void syncTime(const char* buffer) {
-	uint32_t startime = strtoul(buffer,NULL,10);
+void syncTime(const char* stamp) {
+	uint32_t startime = strtoul(stamp,NULL,10);
 	timer_set(startime);
 	uart_puts("Sync ack\n");
 }
 
-uint8_t checkCommand(const char* buffer, const char* cmd) {
-	return (strncmp(buffer,cmd, strlen(cmd)) == 0);
+uint8_t checkCommand(const char* cmd) {
+	return (strncmp(inputbuffer,cmd, strlen(cmd)) == 0);
 }
 
+void generateEventMessage(const TubeEvent event) {
+	char dir[9];
+
+	if(event.direction == ONE_TO_TWO) {
+		strcpy(dir,"OneToTwo");
+	}
+	else {
+		strcpy(dir,"TwoToOne");
+	}
+
+	snprintf(outputbuffer, OUTPUTBUFFER_SIZE, "Capsule %u %lu %s %u\n", 
+				event.tubenumber, event.timestamp, dir, event.time);
+}
 
 /*
  *  Initial state
  */
-enum state_t state_reset(void) {
-	char buffer[32];
-	if(uart_get_line(buffer,32)) {
-		if(checkCommand(buffer,"Reset")) {
+static inline void state_reset(void) {
+	if(uart_get_line(inputbuffer,INPUTBUFFER_SIZE)) {
+		if(checkCommand("Reset")) {
 			uart_puts("Reset ack\n");
-			return RESET;
 		}
-		else if(checkCommand(buffer,"Set")) {
-			syncTime(buffer + 4);
-			return RUNNING; 
+		else if(checkCommand("Set")) {
+			syncTime(inputbuffer + 4);
+			fifo_clear(&eventfifo);
+			state = RUNNING; 
 		}
 	}
-
-	return RESET;
 }
 
 
 /*
  * State in which we wate for new samples to come in
  */ 
-enum state_t state_running(void) {
-	char buffer[32];
-
-	if(uart_get_line(buffer,32)) {
-		if(checkCommand(buffer,"Reset")) {
+static inline void state_running(void) {
+	if(uart_get_line(inputbuffer,INPUTBUFFER_SIZE)) {
+		if(checkCommand("Reset")) {
 			uart_puts("Reset ack\n");
-			return RESET;
+			state = RESET;
 		}
-		else if(checkCommand(buffer,"Set")) {
-			syncTime(buffer + 4);
-			return RUNNING;
+		else if(checkCommand("Set")) {
+			syncTime(inputbuffer + 4);
 		}
+	} else if(!fifo_empty(&eventfifo)) {
+		TubeEvent event = fifo_get(&eventfifo);
+		generateEventMessage(event);
+		uart_puts(outputbuffer);
+		state = WAITACK;
 	}
-
-	/*
-	if(new sample avaiable) {
-		send sample
-		return WAITACK;
-	}
-	*/
-	return RUNNING;
+	
 }
-
 
 /*
  * State in which we wait for a acknowledgement of the last sample send
  */
-enum state_t state_waitack(void) {
-	char buffer[32];
-
-	if(uart_get_line(buffer,32)) {
-		if(checkCommand(buffer,"Reset")) {
+static inline void  state_waitack(void) {
+	if(uart_get_line(inputbuffer,INPUTBUFFER_SIZE)) {
+		if(checkCommand("Reset")) {
 			uart_puts("Reset ack\n");
-			return RESET;
+			state = RESET;
 		}
-		else if(checkCommand(buffer,"Ack")) {
-			return RUNNING;
+		else if(checkCommand("Ack")) {
+			state = RUNNING;
 		}
+	} else {
+		//send message again
+		uart_puts(outputbuffer);
 	}
-
-	/*
-	 *	send sample again
-	 */
-	return WAITACK;
 }
 
 
 int main(void) {
 	DDRC |= (1 << PC0) | (1 << PC1) | (1 << PC2);
 
-	enum state_t state = RESET;
+	state = RESET;
 
 	tubes_init();
 	timer_init();
@@ -108,14 +112,14 @@ int main(void) {
 
 		switch(state) {
 			case RESET:
-				state = state_reset();
+				state_reset();
 				break;
 			case RUNNING:
-				state = state_running();
-			break;
+				state_running();
+				break;
 			case WAITACK:
-				state = state_waitack();
-			break;
+				state_waitack();
+				break;
 		}
 
 	}

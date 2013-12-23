@@ -1,11 +1,11 @@
 #include "timer.h"
 
-uint32_t timestamp;
-uint16_t milliseconds;
+volatile uint32_t timestamp;
+volatile uint16_t milliseconds;
 
 static inline void set_triggered(uint8_t id, enum TubeStatus status) {
 	tubestate[id].status = status;
-	tubestate[id].timeoutdelay = 500;
+	tubestate[id].timeoutdelay = 1000;
 	tubestate[id].milliseconds = milliseconds;
 }
 
@@ -65,7 +65,7 @@ ISR(TIMER0_OVF_vect) {
 	for(i = 0; i < TUBECOUNT; i++) {
 		switch(tubestate[i].status) {
 			case IDLE:
-				PORTC = 0;
+				//PORTC &= ~((1 << PC0) | (1 << PC1));
 				if(tubestate[i].retriggerdelay == 0) {
 					if((*(tube[i].pin) & tube[i].pinmask1) && !(*(tube[i].pin) & tube[i].pinmask2)) {
 						set_triggered(i,TRIG1);
@@ -81,28 +81,28 @@ ISR(TIMER0_OVF_vect) {
 			
 			case TRIG1:
 				if((*(tube[i].pin) & tube[i].pinmask2) && !(*(tube[i].pin) & tube[i].pinmask1)) {
-					set_idle(i,1);
 					post_event(i);
+					set_idle(i,1);
 				} else if(tubestate[i].timeoutdelay == 0) {
 					set_idle(i,0);
 				}
 				else {
 					tubestate[i].timeoutdelay--;
 				}
-				PORTC = (1 << PC0);
+				//PORTC |= (1 << PC0);
 			break;
 			
 			case TRIG2:
 				if((*(tube[i].pin) & tube[i].pinmask1) && !(*(tube[i].pin) & tube[i].pinmask2)) {
-					set_idle(i,1);
 					post_event(i);
+					set_idle(i,1);
 				} else if(tubestate[i].timeoutdelay == 0) {
 					set_idle(i,0);
 				}
 				else {
 					tubestate[i].timeoutdelay--;
 				}
-				PORTC = (1 << PC1);
+				//PORTC |= (1 << PC1);
 			break;
 		}
 

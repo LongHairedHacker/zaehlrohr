@@ -9,8 +9,8 @@
 #include "fifo.h"
 #include "tubes.h"
 
-extern uint32_t timestamp;
-extern uint16_t milliseconds;
+extern volatile uint32_t timestamp;
+extern volatile uint16_t milliseconds;
 
 /*
  * Timer setting:

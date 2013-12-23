@@ -1,6 +1,6 @@
 AVRMCU = atmega8
 F_CPU = 16000000
-ISPPORT = /dev/ttyUSB0
+ISPPORT = /dev/kaboard
 
 VERSION = 0.1
 
@@ -44,7 +44,7 @@ $(OBJDIR)/$(TARGET).hex : $(OBJDIR)/$(TARGET).elf
 
 size : $(OBJDIR)/$(TARGET).elf
 	@echo
-	@$(SIZE) $(OBJDIR)/$(TARGET).hex
+	@$(SIZE) --mcu=$(AVRMCU) -C $(OBJDIR)/$(TARGET).elf
 	@echo
 	
 clean :

@@ -60,4 +60,10 @@ static inline FIFO_TYPE fifo_get(struct fifo *f) {
 	return tmp;
 }
 
+static inline void fifo_clear(struct fifo *f) {
+	f->read = 0;
+	f->write = 0;
+	f->len = 0;
+}
+
 #endif
