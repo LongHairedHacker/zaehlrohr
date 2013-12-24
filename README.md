@@ -15,7 +15,7 @@ All measurements will be aggregated to a node status website.
 Technical details
 -----------------
 The capsule detection is done by two super bright leds and two photo resistors
-attached to the outside of a tube.
+attached 50cm appart to the outside of a tube.
 Drilling holes into the tube is not necessary since it is just transparent enough.
 
 The signals of the photo resistors will be preprocessed by a simple operational amplifier circuit.
