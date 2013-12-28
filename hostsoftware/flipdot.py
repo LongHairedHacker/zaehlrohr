@@ -59,7 +59,7 @@ def str2array(event):
 
 
 
-def send_to_flipdot():
+def send_to_flipdot(event):
     sock.sendto(array2packet(str2array(event)), (UDPHOST, UDPPORT))
     print "Send to Flipdot !"
 
