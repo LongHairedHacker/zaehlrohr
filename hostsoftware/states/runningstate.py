@@ -3,6 +3,8 @@
 import time
 import json
 
+from flipdot import send_to_flipdot
+
 from state import State
 
 class RunningState(State):
@@ -42,6 +44,8 @@ class RunningState(State):
 
 				if abs(event["time"] - int(time.time())) > self.config.resync_threshold:
 					self.statemachine.switch_state("outofsync")
+
+				send_to_flipdot(event)
 
 				event_json = json.dumps(event)
 				if self.first_log_entry:
