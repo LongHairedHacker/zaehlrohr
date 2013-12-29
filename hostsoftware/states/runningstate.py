@@ -20,20 +20,18 @@ class RunningState(State):
 	def switch_to(self):
 		pass
 
-	def _send_to_flipdot(event):
+	def _send_to_flipdot(self,event):
     	text =  " Seidenstrasse update\n"
     	text += "======================\n"
     	text += "Capsule meta data:\n"
     	text += "  from: %s\n" % str(event['start'])
     	text += "  to: %s\n" % str(event['end'])
     	text += "  velocity: %s\n" % str(event['velocity'])
-    	text += "  timestamp: %s\n" % str(event['timestamp'])
+    	text += "  timestamp: %s\n" % str(event['time'])
     	text += "\n\n"
     	text += "Brought to you by:\n"
     	text += "ChoasInKL and muCCC\n"
 
-    matrix.showText(text)
-    print "Send to flipdot"
 		self.flipdot.showText(text)
 		print "Send to flipdot"
 
