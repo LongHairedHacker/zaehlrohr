@@ -14,6 +14,3 @@ class State(object):
 
 	def set_statemachine(self, statemachine):
 		self.statemachine = statemachine
-
-	def set_config(self, config):
-		self.config = config

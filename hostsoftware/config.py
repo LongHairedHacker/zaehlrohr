@@ -10,3 +10,9 @@ class Config(object):
 
 	distance = 0.5
 	tubes = [('Test1','Test2'), ('Test1','Test3')]
+
+	flipdot_hosts = [("2001:67c:20a1:1063:ba27:ebff:fe86:8697",2323),
+					("2001:67c:20a1:1063:ba27:ebff:fe23:60d7", 2323),
+					("2001:67c:20a1:1063:ba27:ebff:fe71:dd32", 2323)]
+	flipdot_size=(144, 120)
+	flipdot_transposed = True

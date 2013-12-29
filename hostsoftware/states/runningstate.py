@@ -3,9 +3,9 @@
 import time
 import json
 
-from flipdot import send_to_flipdot
-
+from flipdot.FlipdotMatrix import FlipdotMatrix
 from state import State
+from config import Config
 
 class RunningState(State):
 	name = "running"
@@ -15,8 +15,28 @@ class RunningState(State):
 		self.json_log = open(logfile,'w', 0)
 		self.first_log_entry = True
 
+		self.flipdot = FlipdotMatrix(Config.flipdot_hosts, Config.flipdot_size, Config.flipdot_transposed)
+
 	def switch_to(self):
 		pass
+
+	def _send_to_flipdot(event):
+    	text =  " Seidenstrasse update\n"
+    	text += "======================\n"
+    	text += "Capsule meta data:\n"
+    	text += "  from: %s\n" % str(event['start'])
+    	text += "  to: %s\n" % str(event['end'])
+    	text += "  velocity: %s\n" % str(event['velocity'])
+    	text += "  timestamp: %s\n" % str(event['timestamp'])
+    	text += "\n\n"
+    	text += "Brought to you by:\n"
+    	text += "ChoasInKL and muCCC\n"
+
+    matrix.showText(text)
+    print "Send to flipdot"
+		self.flipdot.showText(text)
+		print "Send to flipdot"
+
 
 	def execute(self):
 		line = self.serial.readline().strip()
@@ -30,7 +50,7 @@ class RunningState(State):
 
 				event["time"] = int(parts[2])
 
-				tube = self.config.tubes[int(parts[1])]
+				tube = Config.tubes[int(parts[1])]
 				if parts[3] == "OneToTwo":
 					event["start"] = tube[0]
 					event["end"] = tube[1]
@@ -39,13 +59,12 @@ class RunningState(State):
 					event["end"] = tube[0]
 
 				
-				event["velocity"] = self.config.distance / int(parts[4]) * 1000
+				event["velocity"] = Config.distance / int(parts[4]) * 1000
 
-
-				if abs(event["time"] - int(time.time())) > self.config.resync_threshold:
+				if abs(event["time"] - int(time.time())) > Config.resync_threshold:
 					self.statemachine.switch_state("outofsync")
 
-				send_to_flipdot(event)
+				self._send_to_flipdot(event)
 
 				event_json = json.dumps(event)
 				if self.first_log_entry:

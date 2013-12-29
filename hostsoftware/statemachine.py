@@ -1,16 +1,14 @@
 #!/bin/env python2
 
 class StateMachine(object):
-	def __init__(self,serial,config):
+	def __init__(self,serial):
 		self.serial = serial
-		self.config = config
 		self.states = {}
 		self.current_state = None
 
 	def register_state(self, state):
 		state.set_statemachine(self)
 		state.set_serial(self.serial)
-		state.set_config(self.config)
 		self.states[state.name] = state
 
 	def execute(self):

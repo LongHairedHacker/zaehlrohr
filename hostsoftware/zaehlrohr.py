@@ -14,7 +14,7 @@ if not ser:
   sys.exit(1)
 
 
-statemachine = StateMachine(ser, Config)
+statemachine = StateMachine(ser)
 statemachine.register_state(ResetState())
 statemachine.register_state(OutOfSyncState())
 statemachine.register_state(RunningState(Config.json_log))
