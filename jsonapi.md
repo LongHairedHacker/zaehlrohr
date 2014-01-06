@@ -1,6 +1,7 @@
 Zählrohr json api
 =================
 This document is a request for comments and may change.
+The Json API specified below is not yet implemented.
 
 Naming conventions
 ------------------

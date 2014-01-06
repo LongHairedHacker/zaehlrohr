@@ -31,11 +31,9 @@ The output of each comparator circuit is directly attached to the digital IO-Pin
 micro controller board (e.g. a Kaboard).
 The board calculates direction and speed of each capsule and sends the data to a beagle bone using a 
 simple usb uart bridge.
-The datasets will be saved in database for easier aggregation, by a javascript running under nodejs.
+The datasets will be saved in json files by a python script and uploaded to a webserver.
+A cron job can be used to generate aggregated data.
 The aggregated data (capsules per time, total numbers of capsules, minimum, maximum and average speed ...),
-will be accessible via HTTP as json data.
-There will also be website that displays the data as nice graphs using chart.js.
-In case the beaglebone has not enough power to serve all requests,
-an additional webservers can be used as reverse proxies.
+will be accessible as json data as well.
 
  
