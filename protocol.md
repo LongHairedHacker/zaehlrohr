@@ -27,6 +27,9 @@ kaboard:	Sync ack
 Measurements
 ------------
 ```
-kaboard: 	Capsule	<tube number> <"in"/"out"> <timestamp> <speed> 
+kaboard: 	Capsule	<tube number> <"OneToTwo"/"TwoToOne"> <timestamp> <speed> 
 bone:		Capsule ack
 ```
+
+* The "OneToTwo"/"TwoToOne" indicates the direction, from sensor one to sensor two or the other way.
+
