@@ -5,7 +5,9 @@ volatile uint16_t milliseconds;
 
 static inline void set_triggered(uint8_t id, enum TubeStatus status) {
 	tubestate[id].status = status;
-	tubestate[id].timeoutdelay = 1000;
+	//Do not set this setting to anything bigger 999
+	//Since it is assumed that there can never be more than one second between two samples 
+	tubestate[id].timeoutdelay = 750; 
 	tubestate[id].milliseconds = milliseconds;
 }
 
@@ -26,7 +28,7 @@ static inline void post_event(uint8_t id) {
 		event.tubenumber = id;
 
 		//We can use the current timestamp here,
-		//since our event can be at maximum 500ms in the past do to our timeout.
+		//since our event can be at maximum 750ms in the past due to our timeout.
 		//This leads to an accuracy of +-1s which is accaptable.
 		event.timestamp = timestamp;
 
@@ -37,7 +39,7 @@ static inline void post_event(uint8_t id) {
 			event.direction = TWO_TO_ONE;
 		}
 
-		// Due to the timeoutdelay we can't have more then 500ms difference,
+		// Due to the timeoutdelay we can't have more then 750ms difference,
 		// so the there is no need to consider the timestamp here
 		if(milliseconds > tubestate[id].milliseconds) {
 			//We are still in the same second

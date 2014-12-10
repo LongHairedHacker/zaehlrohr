@@ -30,3 +30,6 @@ Measurements
 kaboard: 	Capsule	<tube number> <direction: "OneToTwo"/"TwoToOne"> <timestamp> <passage time> 
 bone:		Capsule ack
 ```
+
+* The "OneToTwo"/"TwoToOne" indicates the direction, from sensor one to sensor two or the other way.
+
