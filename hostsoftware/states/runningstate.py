@@ -50,11 +50,11 @@ class RunningState(State):
 
 				tube = Config.tubes[int(parts[1])]
 				if parts[3] == "OneToTwo":
-					event["start"] = tube[0]
-					event["end"] = tube[1]
+					event["origin"] = tube[0]
+					event["destination"] = tube[1]
 				else:
-					event["start"] = tube[1]
-					event["end"] = tube[0]
+					event["origin"] = tube[1]
+					event["destination"] = tube[0]
 
 				
 				event["velocity"] = Config.distance / int(parts[4]) * 1000

@@ -1,0 +1,7 @@
+[
+{"start": "Cbase", "velocity": 5.434782608695652, "end": "ErsterStock", "time": 1388396034},
+{"start": "ErsterStock", "velocity": 2.0491803278688527, "end": "Cbase", "time": 1388396168},
+{"start": "Cbase", "velocity": 3.3333333333333335, "end": "ErsterStock", "time": 1388396237},
+{"start": "ErsterStock", "velocity": 3.472222222222222, "end": "Cbase", "time": 1388396262},
+{"start": "Cbase", "velocity": 3.246753246753247, "end": "ErsterStock", "time": 1388396286}
+]
