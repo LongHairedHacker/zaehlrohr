@@ -1,4 +1,4 @@
-﻿CREATE VIEW daly_summary AS
+﻿CREATE VIEW daily_summary AS
 	SELECT event, 
 		time, 
 		node, 
