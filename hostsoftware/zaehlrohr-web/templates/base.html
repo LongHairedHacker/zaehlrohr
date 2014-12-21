@@ -1,0 +1,131 @@
+
+<html>
+<head>
+	<title>Zählrohr statistics for {{node}} at {{eventname}}</title>
+  	<link rel="stylesheet" href="/static/css/pure/pure-min.css">
+  	<link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="/static/css/layout.css">
+
+	<script src="/static/js/jquery-2.1.3.min.js"></script>
+	<script src="/static/js/highcharts/highcharts.js"></script>
+	<script src="/static/js/highcharts/themes/dark.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="header">
+		<h1>Zählrohr statistics for {{node}} at {{eventname}}</h1>
+	</div>
+	<div class="pure-g-r">
+		<div class="pure-u-2-3">
+			<div class="chartcontainer">
+				<div id="capsule_chart"></div>	
+			</div>
+		</div>
+		<div class="pure-u-1-3">
+			<div class="textcontainer">
+			</div>
+		</div>
+	</div>
+	<div class="pure-g-r">
+		<div class="pure-u-2-3">
+			<div class="chartcontainer">
+				<div  id="speed_chart"></div>	
+			</div>
+		</div>
+		<div class="pure-u-1-3">
+			<div class="textcontainer">
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function () {
+		$.getJSON( "{{url_for('node_summaries', eventname=eventname, node=node, interval='hourly')}}",
+		function( data ) {
+			capsuleSeriesData = [
+				{name: 'Received', data: []},
+				{name: 'Send', data: []},
+			];
+			speedSeriesData = [
+				{name: 'maximum', data: []},
+				{name: 'average', data: []},
+				{name: 'minimum', data: []}
+			];
+
+
+			for(i in data) {
+				capsuleSeriesData[0].data.push([data[i].time * 1000, data[i].incoming]);
+				capsuleSeriesData[1].data.push([data[i].time * 1000, data[i].outgoing]);
+
+				speedSeriesData[0].data.push([data[i].time * 1000, data[i].max_velocity]);
+				speedSeriesData[1].data.push([data[i].time * 1000, data[i].avg_velocity]);
+				speedSeriesData[2].data.push([data[i].time * 1000, data[i].min_velocity]);
+			}
+			
+
+
+			var capsuleChart = $('#capsule_chart').highcharts({
+				chart: {
+					type: 'column'
+				},
+				plotOptions: {
+					column: {
+						stacking: 'normal'
+					}
+				},
+				title: {
+					text: 'Capsules processed'
+				},
+				xAxis: {
+					type: 'datetime',
+					title: {
+						text: 'Date'
+					}
+				},
+				yAxis: {
+					title: {
+						text: 'Capsules'
+					},
+					min: 0
+				},
+				tooltip: {
+					headerFormat: '<b>{series.name}</b><br>',
+					pointFormat: '{point.x:%e. %b}: {point.y} Capsules'
+				},
+				series: capsuleSeriesData
+			});
+			
+			var speedChart = $('#speed_chart').highcharts({
+				chart: {
+					type: 'line'
+				},
+				title: {
+					text: 'Capsule speeds'
+				},
+				xAxis: {
+					type: 'datetime',
+					title: {
+						text: 'Date'
+					}
+				},
+				yAxis: {
+					title: {
+						text: 'Speed [m/s]'
+					},
+					min: 0
+				},
+				tooltip: {
+					headerFormat: '<b>{series.name}</b><br>',
+					pointFormat: '{point.x:%e. %b}: {point.y} m/s'
+				},
+				series: speedSeriesData
+			});
+
+			$(window).resize();	
+		});
+	});
+</script>
+</body>
+</html>

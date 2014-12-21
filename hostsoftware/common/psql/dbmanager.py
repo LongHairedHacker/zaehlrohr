@@ -51,7 +51,7 @@ class DBManager(object):
 		for i in range(0,len(keys)):
 			result[keys[i]] = summary[i]
 
-		result['time'] = result['time'].strftime("%s")
+		result['time'] = int(result['time'].strftime("%s"))
 
 		return result
 
@@ -99,7 +99,7 @@ class DBManager(object):
 		for i in range(0,len(keys)):
 			result[keys[i]] = capsule[i]
 
-		result['time'] = result['time'].strftime("%s")
+		result['time'] = int(result['time'].strftime("%s"))
 
 		return result
 

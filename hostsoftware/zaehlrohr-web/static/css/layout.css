@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url('dejavu-sans-ttf/DejaVuSans.eot');
+  src: url('dejavu-sans-ttf/DejaVuSans.eot?#iefix') format('embedded-opentype'), url('dejavu-sans-ttf/DejaVuSans.svg#DejaVu Sans') format('svg'), url('dejavu-sans-ttf/DejaVuSans.woff') format('woff'), url('dejavu-sans-ttf/DejaVuSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  font-family: "DejaVu Sans";
+  background-color: #000020;
+  color: #ffffff; }
+
+#container {
+  margin: 4px; }
+
+#header {
+  margin-top: 4px;
+  margin-right: 4px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #000050;
+  border-radius: 3px;
+  background-color: #000050;
+  padding-left: 5%; }
+
+.chartcontainer {
+  margin-top: 4px;
+  margin-right: 4px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #000050;
+  border-radius: 3px;
+  background-color: #000050; }
+
+.textcontainer {
+  margin-top: 4px;
+  margin-right: 4px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #000050;
+  border-radius: 3px;
+  background-color: #000050;
+  padding-top: 4px;
+  padding-left: 4px; }
+  .textcontainer a {
+    text-decoration: none;
+    color: #1947D1; }
+    .textcontainer a:visited {
+      color: #4C5B89; }
+    .textcontainer a:hover {
+      color: #7E98E5; }
+  .textcontainer table {
+    background-color: #ffffff; }
+    .textcontainer table .odd-row {
+      background-color: #e4eef2; }
+
+.button-green {
+  color: #ffffff;
+  background-color: #1CB841; }
+  .button-green:visited {
+    color: #ffffff; }
+  .button-green:hover {
+    color: #ffffff; }
+
+.button-red {
+  color: #ffffff;
+  background-color: #ca3c3c; }
+  .button-red:visited {
+    color: #ffffff; }
+  .button-red:hover {
+    color: #ffffff; }
+
+.button-lightblue {
+  color: #ffffff;
+  background-color: #42B8DD; }
+  .button-lightblue:visited {
+    color: #ffffff; }
+  .button-lightblue:hover {
+    color: #ffffff; }

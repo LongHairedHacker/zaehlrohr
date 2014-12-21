@@ -3,7 +3,7 @@ sys.path.append('../common/psql')
 
 import json
 
-from flask import Flask, abort, redirect, url_for
+from flask import Flask, abort, redirect, url_for, render_template
 app = Flask(__name__)
 
 from dbmanager import DBManager
@@ -14,11 +14,14 @@ from config import *
 def index_redirect():
     return redirect(url_for('node_chart', eventname=CURRENT_EVENT, node=DEFAULT_NODE)) 
 
-
 @app.route('/charts/<eventname>/<node>/')
 def node_chart(eventname, node):
-	return "Foobla"
+	if not eventname in NODES.keys() or not node in NODES[eventname]:
+		abort(404)
+	return render_template('base.html', eventname=eventname, node=node)
 
+
+# Json stuff
 @app.route('/json/<eventname>/nodes/')
 @app.route('/json/<eventname>/nodes/<node>')
 @app.route('/json/<eventname>/nodes/<node>/<interval>')
@@ -36,7 +39,6 @@ def node_summaries(eventname, node=None, interval='hourly', timestamp=None):
 def capsules(eventname, node=None):
 	data = json.dumps(dbman.get_capsules(node,eventname))
 	return data
-
 
 
 if __name__ == '__main__':
