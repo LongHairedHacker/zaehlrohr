@@ -11,9 +11,10 @@
 		in_min_velocity,
 		out_min_velocity,
 		CASE 
-			WHEN summary.in_min_velocity < summary.out_min_velocity 
-				THEN summary.in_min_velocity 
-				ELSE summary.out_min_velocity
+			WHEN summary.in_min_velocity = 0 THEN summary.out_min_velocity 
+			WHEN summary.out_min_velocity = 0 THEN summary.in_min_velocity
+			WHEN summary.in_min_velocity < summary.out_min_velocity THEN summary.in_min_velocity 
+			ELSE summary.out_min_velocity
 		END AS min_velocity,
 		in_max_velocity,
 		out_max_velocity,
