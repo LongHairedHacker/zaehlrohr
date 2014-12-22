@@ -1,3 +1,10 @@
+$boxBackground : #282828;
+$dawnRed : #EA553E;
+$dawnOrange : #EF7D2C;
+$dawnYellow : #F4990D;
+$dawnPurple : #57368D;
+$dawnDeepPurple : #451B6B;
+
 @font-face {
 	font-family: "DejaVu Sans";
 	src: url('dejavu-sans-ttf/DejaVuSans.eot');
@@ -17,14 +24,20 @@
 	}
 }
 
-@mixin roundconers($color, $radius) {
+@mixin colorborders($colorTop, $colorBottom, $width) {
 	border: {
-		width: $radius;
-		style: solid;
-		color: $color; 
-		radius: $radius/2;
+		top: {
+			color: $colorTop;
+			width: $width;
+			style: solid;
+		}
+		bottom: {
+			color: $colorBottom;
+			width: $width;
+			style: solid;
+		}
 	}
-	background-color: $color;
+	background-color: $boxBackground;
 }
 
 @mixin fixlinkcolor($color) {
@@ -42,7 +55,7 @@
 
 body{
 	font-family: "DejaVu Sans";
-	background-color: #000020;
+	background: linear-gradient(to bottom, #000000 0%,#000000 40%,#8f3123 60%,#8c4c1e 70%,#825818 80%,#36274f 90%,#29163a 100%);
 	color: #ffffff;
 }
 
@@ -53,24 +66,24 @@ body{
 
 #header {
 	@include gridcontainer;
-	@include roundconers(#000050,6px);
-	padding: {
-		left: 5%;
-	};
+	@include colorborders($dawnRed,$dawnOrange,3px);
+	text-align: center;
 }
 
-.chartcontainer {
+.uppercontainer {
 	@include gridcontainer;
-	@include roundconers(#000050,6px);
+	@include colorborders($dawnOrange, $dawnYellow,3px);
 }
 
-.textcontainer {
+.lowercontainer {
 	@include gridcontainer;
-	@include roundconers(#000050,6px);
-	padding:{
-			top: 4px;
-			left: 4px;
-	}
+	@include colorborders($dawnYellow, $dawnPurple,3px);
+}
+
+#footer {
+	@include gridcontainer;
+	@include colorborders($dawnPurple, $dawnDeepPurple,3px);
+	padding: 6px;
 
 	a {
 		text-decoration: none;
@@ -85,11 +98,28 @@ body{
 		}
 	}
 
-	table {
-		background-color: #ffffff;
+}
 
-		.odd-row {
-			background-color: #e4eef2;
+
+
+.textcontainer {
+	padding:{
+			top: 4px;
+			left: 4px;
+	}
+	
+	font-size: 20px;
+
+	a {
+		text-decoration: none;
+		color: #1947D1;
+
+		&:visited {
+			color: #4C5B89;
+		}
+
+		&:hover {
+			color: #7E98E5;
 		}
 	}
 }

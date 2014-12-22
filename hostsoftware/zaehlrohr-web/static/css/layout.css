@@ -7,7 +7,7 @@
 
 body {
   font-family: "DejaVu Sans";
-  background-color: #000020;
+  background: linear-gradient(to bottom, #000000 0%, #000000 40%, #8f3123 60%, #8c4c1e 70%, #825818 80%, #36274f 90%, #29163a 100%);
   color: #ffffff; }
 
 #container {
@@ -16,32 +16,60 @@ body {
 #header {
   margin-top: 4px;
   margin-right: 4px;
-  border-width: 6px;
-  border-style: solid;
-  border-color: #000050;
-  border-radius: 3px;
-  background-color: #000050;
-  padding-left: 5%; }
+  border-top-color: #EA553E;
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-bottom-color: #EF7D2C;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  background-color: #282828;
+  text-align: center; }
 
-.chartcontainer {
+.uppercontainer {
   margin-top: 4px;
   margin-right: 4px;
-  border-width: 6px;
-  border-style: solid;
-  border-color: #000050;
-  border-radius: 3px;
-  background-color: #000050; }
+  border-top-color: #EF7D2C;
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-bottom-color: #F4990D;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  background-color: #282828; }
+
+.lowercontainer {
+  margin-top: 4px;
+  margin-right: 4px;
+  border-top-color: #F4990D;
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-bottom-color: #57368D;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  background-color: #282828; }
+
+#footer {
+  margin-top: 4px;
+  margin-right: 4px;
+  border-top-color: #57368D;
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-bottom-color: #451B6B;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  background-color: #282828;
+  padding: 6px; }
+  #footer a {
+    text-decoration: none;
+    color: #1947D1; }
+    #footer a:visited {
+      color: #4C5B89; }
+    #footer a:hover {
+      color: #7E98E5; }
 
 .textcontainer {
-  margin-top: 4px;
-  margin-right: 4px;
-  border-width: 6px;
-  border-style: solid;
-  border-color: #000050;
-  border-radius: 3px;
-  background-color: #000050;
   padding-top: 4px;
-  padding-left: 4px; }
+  padding-left: 4px;
+  font-size: 20px; }
   .textcontainer a {
     text-decoration: none;
     color: #1947D1; }
@@ -49,10 +77,6 @@ body {
       color: #4C5B89; }
     .textcontainer a:hover {
       color: #7E98E5; }
-  .textcontainer table {
-    background-color: #ffffff; }
-    .textcontainer table .odd-row {
-      background-color: #e4eef2; }
 
 .button-green {
   color: #ffffff;
