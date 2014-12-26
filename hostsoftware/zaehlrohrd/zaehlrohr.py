@@ -1,11 +1,12 @@
 #!/bin/env python2
+import sys
 import serial
 import time
-import sys
 
 from config import Config
 from statemachine import StateMachine
 from states import *
+from outputs import *
 
 
 ser = serial.Serial(Config.serialdevice, Config.baudrate, timeout=Config.timeout)
@@ -17,7 +18,7 @@ if not ser:
 statemachine = StateMachine(ser)
 statemachine.register_state(ResetState())
 statemachine.register_state(OutOfSyncState())
-statemachine.register_state(RunningState(Config.json_log))
+statemachine.register_state(RunningState([PsqlOutput(), Flipdot()]))
 statemachine.switch_state("reset")
 
 while True:
