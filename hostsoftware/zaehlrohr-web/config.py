@@ -1,9 +1,9 @@
 #!/bin/env python2
 
-CURRENT_EVENT = '30C3'
-DEFAULT_NODE = 'Cbase'
+CURRENT_EVENT = '31C3'
+DEFAULT_NODE = 'CentralNode'
 
 NODES = {
 	'30C3': ['Cbase', 'Baellebad', 'ErsterStock'],
-	'31C3': ['HardwareHackingArea', 'SoftwareAndOpenSource', 'Comix' 'Milliways','fail0verflow', 'BallPit'],
+	'31C3': ['CentralNode', 'HardwareHackingArea', 'SoftwareAndOpenSource', 'Comix' 'Milliways','Netze', 'BallPit'],
 }

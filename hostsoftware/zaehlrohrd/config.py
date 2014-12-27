@@ -14,7 +14,7 @@ class Config(object):
 				('CentralNode', 'SoftwareAndOpenSource'),
 				('CentralNode', 'Comix'),
 				('CentralNode', 'Milliways'),
-				('CentralNode', 'fail0verflow'),
+				('CentralNode', 'Netze'),
 				('CentralNode', 'BallPit')]
 
 
