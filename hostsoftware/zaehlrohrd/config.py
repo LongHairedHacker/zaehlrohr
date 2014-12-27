@@ -1,7 +1,7 @@
 #!/bin/env python2
 
 class Config(object):
-	serialdevice = "/dev/ttyUSB0"
+	serialdevice = "/dev/zaehlrohr"
 	baudrate = 38400
 	timeout = 0.100 	#100ms
 	resync_threshold = 5
