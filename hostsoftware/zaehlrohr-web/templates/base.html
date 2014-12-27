@@ -122,8 +122,12 @@
 </div>
 <script>
 	$(function () {
-		
-		 $('#capsule_chart').highcharts({
+		Highcharts.setOptions({
+        	global: {
+            	timezoneOffset: 60
+        	}
+    	});
+		$('#capsule_chart').highcharts({
 			chart: {
 				type: 'column'
 			},
