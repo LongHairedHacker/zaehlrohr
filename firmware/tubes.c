@@ -1,8 +1,13 @@
 #include "tubes.h"
 
 const Tube tube[TUBECOUNT] = {
-	{&PINB, &PORTB, &DDRB, (1 << PB4), (1 << PB5)},
+	{&PINC, &PORTC, &DDRC, (1 << PC5), (1 << PC4)},
+	{&PINC, &PORTC, &DDRC, (1 << PC3), (1 << PC2)},
+	{&PINC, &PORTC, &DDRC, (1 << PC1), (1 << PC0)},
+	
+	{&PINB, &PORTB, &DDRB, (1 << PB5), (1 << PB4)},
 	{&PINB, &PORTB, &DDRB, (1 << PB3), (1 << PB2)},
+	{&PIND, &PORTD, &DDRD, (1 << PD4), (1 << PD3)},
 };
 
 TubeState tubestate[TUBECOUNT];

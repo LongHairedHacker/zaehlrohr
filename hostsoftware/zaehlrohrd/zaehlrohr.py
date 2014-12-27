@@ -18,7 +18,7 @@ if not ser:
 statemachine = StateMachine(ser)
 statemachine.register_state(ResetState())
 statemachine.register_state(OutOfSyncState())
-statemachine.register_state(RunningState([PsqlOutput(), Flipdot()]))
+statemachine.register_state(RunningState([PsqlOutput(), ]))
 statemachine.switch_state("reset")
 
 while True:

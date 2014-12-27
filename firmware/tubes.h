@@ -6,7 +6,7 @@
 
 #include "fifo.h"
 
-#define TUBECOUNT 2
+#define TUBECOUNT 6 
 
 typedef struct {
 	volatile uint8_t *pin;

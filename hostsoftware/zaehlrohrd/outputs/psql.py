@@ -8,10 +8,10 @@ from dbmanager import DBManager
 
 class PsqlOutput(object):
 	def __init__(self):
-		dbman = DBManager(Config.connection_string, Config.eventname)
+		self.dbman = DBManager(Config.connection_string, Config.eventname)
 	
 	def process_event(self, event):
-		dbman.insert(event, Config.eventname)
+		self.dbman.insert_event(event, Config.eventname)
 		
 
 
