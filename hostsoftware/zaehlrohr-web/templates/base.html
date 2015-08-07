@@ -4,11 +4,11 @@
 	<title>Zählrohr statistics for {{node}} at {{eventname}}</title>
   	<link rel="stylesheet" href="/static/css/pure/pure-min.css">
   	<link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.min.css">
-  	<link rel="stylesheet" href="/static/css/layout.css">
+  	<link rel="stylesheet" href="/static/css/events/{{eventname}}/layout.css">
 
 	<script src="/static/js/jquery-2.1.3.min.js"></script>
 	<script src="/static/js/highcharts/highcharts.js"></script>
-	<script src="/static/js/highcharts/themes/dawn.js"></script>
+	<script src="/static/js/highcharts/themes/{{eventname}}.js"></script>
 
 </head>
 <body>
@@ -17,20 +17,20 @@
 	<div id="header">
 		<div class="pure-g-r">
 			<div class="pure-u-1-5">
-				<img src="/static/logo-31C3.png"/>
+				<img src="/static/logos/{{eventname}}/logo.png"/>
 			</div>
 			<div class="pure-u-3-5">
 				<h1>Zählrohr statistics for {{node}} at {{eventname}}</h1>
 			</div>
 			<div class="pure-u-1-5">
-				<img src="/static/logo.png"/>
+				<img src="/static/logos/{{eventname}}/logo_event.png"/>
 			</div>
 		</div>
 	</div>
 	<div class="pure-g-r">
 		<div class="pure-u-2-3">
 			<div class="uppercontainer">
-				<div id="capsule_chart"></div>	
+				<div id="capsule_chart"></div>
 			</div>
 		</div>
 		<div class="pure-u-1-3">

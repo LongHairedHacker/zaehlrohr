@@ -1,0 +1,116 @@
+$boxBackground : #404040;
+$eggplant : #8e5990;
+$blue : #7585a8;
+$green : #829a40;
+$orange : #e4ab50;
+$brown : #a57450;
+
+
+@font-face {
+	font-family: "DejaVu Sans";
+	src: url('/css/dejavu-sans-ttf/DejaVuSans.eot');
+	src: url('/css/dejavu-sans-ttf/DejaVuSans.eot?#iefix') format('embedded-opentype'),
+	url('/css/dejavu-sans-ttf/DejaVuSans.svg#DejaVu Sans') format('svg'),
+	url('/css/dejavu-sans-ttf/DejaVuSans.woff') format('woff'),
+	url('/css/dejavu-sans-ttf/DejaVuSans.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@mixin gridcontainer {
+	margin: {
+		top: 4px;
+		right: 4px;
+	}
+}
+
+@mixin colorborders($colorTop, $colorBottom, $width) {
+	border: {
+		top: {
+			color: $colorTop;
+			width: $width;
+			style: solid;
+		}
+		bottom: {
+			color: $colorBottom;
+			width: $width;
+			style: solid;
+		}
+	}
+	background-color: $boxBackground;
+}
+
+@mixin fixlinkcolor($color) {
+		color: $color;
+
+		&:visited {
+			color: $color;
+		}
+
+		&:hover {
+			color: $color;
+		}
+}
+
+
+body{
+	font-family: "DejaVu Sans";
+	color: #ffffff;
+	background-color: #808080;
+	background-image: url('background.png');
+}
+
+#container {
+	margin: 4px;
+}
+
+
+#header {
+	@include gridcontainer;
+	@include colorborders($eggplant,$blue,3px);
+	padding : 3px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.uppercontainer {
+	@include gridcontainer;
+	@include colorborders($blue, $green,3px);
+}
+
+.lowercontainer {
+	@include gridcontainer;
+	@include colorborders($green, $orange,3px);
+}
+
+#footer {
+	@include gridcontainer;
+	@include colorborders($orange, $brown,3px);
+	padding: 6px;
+}
+
+
+
+.textcontainer {
+	padding: {
+			top: 4px;
+			left: 4px;
+	}
+	font-size: 20px;
+}
+
+
+a {
+		text-decoration: none;
+		color: $eggplant;
+
+		&:visited {
+			color: $eggplant;
+		}
+
+		&:hover {
+			color: $orange;
+		}
+	}
+
