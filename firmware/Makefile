@@ -1,6 +1,6 @@
 AVRMCU = atmega8
 F_CPU = 16000000
-ISPPORT = /dev/kaboard
+ISPPORT = /dev/zaehlrohr
 
 VERSION = 0.1
 

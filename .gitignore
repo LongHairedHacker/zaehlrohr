@@ -4,3 +4,6 @@
 .depends
 *.o
 *.elf
+*.swp
+.virtenv
+virtenv

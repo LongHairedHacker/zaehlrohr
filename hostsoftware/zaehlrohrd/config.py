@@ -1,0 +1,23 @@
+#!/bin/env python2
+
+class Config(object):
+	serialdevice = "/dev/zaehlrohr"
+	baudrate = 38400
+	timeout = 0.100 	#100ms
+	resync_threshold = 5
+
+	eventname = "31C3"
+	connection_string = "dbname=zaehlrohr user=zaehlrohr"
+
+	distance = 0.5
+	tubes = [('CentralNode', 'HardwareHackingArea'), 
+				('CentralNode', 'SoftwareAndOpenSource'),
+				('CentralNode', 'Comix'),
+				('CentralNode', 'Milliways'),
+				('CentralNode', 'Netze'),
+				('CentralNode', 'BallPit')]
+
+
+
+
+
