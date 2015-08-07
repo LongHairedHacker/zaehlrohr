@@ -7,18 +7,18 @@ class DBManager(object):
 		'insert_event' : "INSERT INTO capsules (event, origin, destination, time, velocity) "
 		 				+ "VALUES ($1,$2,$3,$4,$5)",
 		
-		'get_hourly_summaries' : "SELECT * FROM hourly_summary WHERE event = $1",
-		'get_hourly_node_summaries' : "SELECT * FROM hourly_summary WHERE event = $1 AND node = $2",
-		'get_hourly_interval_summaries' : "SELECT * FROM hourly_summary WHERE event = $1 AND time = date_trunc('hour', $2::timestamp)",
+		'get_hourly_summaries' : "SELECT * FROM hourly_summary WHERE event = $1 ORDER BY time",
+		'get_hourly_node_summaries' : "SELECT * FROM hourly_summary WHERE event = $1 AND node = $2 ORDER BY time",
+		'get_hourly_interval_summaries' : "SELECT * FROM hourly_summary WHERE event = $1 AND time = date_trunc('hour', $2::timestamp) ORDER BY time",
 		'get_hourly_summary' : "SELECT * FROM hourly_summary WHERE event = $1 AND node = $2 AND time = date_trunc('hour', $3::timestamp)",
 		
-		'get_daily_summaries' : "SELECT * FROM daily_summary WHERE event = $1",
-		'get_daily_node_summaries' : "SELECT * FROM daily_summary WHERE event = $1 AND node = $2",
-		'get_daily_interval_summaries' : "SELECT * FROM daily_summary WHERE event = $1 AND time = date_trunc('day', $2::timestamp)",
+		'get_daily_summaries' : "SELECT * FROM daily_summary WHERE event = $1 ORDER BY time",
+		'get_daily_node_summaries' : "SELECT * FROM daily_summary WHERE event = $1 AND node = $2 ORDER BY time",
+		'get_daily_interval_summaries' : "SELECT * FROM daily_summary WHERE event = $1 AND time = date_trunc('day', $2::timestamp) ORDER BY time",
 		'get_daily_summary' : "SELECT * FROM daily_summary WHERE event = $1 AND node = $2 AND time = date_trunc('day', $3::timestamp)",
 
-		'get_node_capsules' : "SELECT * FROM capsules WHERE event = $1 AND (origin = $2 OR destination = $2)",
-		'get_all_capsules' : "SELECT * FROM capsules WHERE event = $1",
+		'get_node_capsules' : "SELECT * FROM capsules WHERE event = $1 AND (origin = $2 OR destination = $2) ORDER BY time",
+		'get_all_capsules' : "SELECT * FROM capsules WHERE event = $1 ORDER BY time",
 	}
 
 	def __init__(self, connectionString, eventname):
