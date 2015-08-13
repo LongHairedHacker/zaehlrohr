@@ -6,16 +6,14 @@ class Config(object):
 	timeout = 0.100 	#100ms
 	resync_threshold = 5
 
-	eventname = "31C3"
+	eventname = "CCCAMP2015"
 	connection_string = "dbname=zaehlrohr user=zaehlrohr"
 
 	distance = 0.5
-	tubes = [('CentralNode', 'HardwareHackingArea'), 
-				('CentralNode', 'SoftwareAndOpenSource'),
-				('CentralNode', 'Comix'),
-				('CentralNode', 'Milliways'),
-				('CentralNode', 'Netze'),
-				('CentralNode', 'BallPit')]
+	tubes = [('CentralNode', 'FoodHackingVillage'), 
+				('CentralNode', 'metalab'),
+				('CentralNode', 'Roadside'),
+				('CentralNode', 'Milliways')]
 
 
 
