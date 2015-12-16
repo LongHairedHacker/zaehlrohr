@@ -4,7 +4,7 @@ Zählrohr
 TLDR;
 -----
 Zaehlrohr is a simple approach to measure the performance 
-of project seidenstrasse (see http://events.ccc.de/congress/2013/wiki/Projects:Seidenstrasse).
+of project seidenstrasse (see http://events.ccc.de/congress/2015/wiki/Projects:Seidenstrasse).
 
 Its aim is to count the capsules which are being send to and from a switching node.
 This is done by attaching two light barriers to each tube
