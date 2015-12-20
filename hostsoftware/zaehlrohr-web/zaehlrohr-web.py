@@ -1,12 +1,15 @@
 import sys
 sys.path.append('../common/psql')
 
+import os
 import json
 
 from flask import Flask, abort, redirect, url_for, render_template
 from flask_headers import headers
 
 app = Flask(__name__)
+
+app.static_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
 
 from dbmanager import DBManager
 
@@ -15,14 +18,24 @@ from config import *
 @app.route('/')
 @headers({'Cache-Control':'public, max-age=360'})
 def index_redirect():
-    return redirect(url_for('node_chart', eventname=CURRENT_EVENT, node=DEFAULT_NODE)) 
+    return redirect(url_for('node_chart', eventname=CURRENT_EVENT, node=DEFAULT_NODE))
+
+@app.route('/charts/<eventname>/')
+def event_redirect(eventname):
+    if not eventname in NODES.keys():
+        abort(404)
+
+    return redirect(url_for('node_chart', eventname=eventname, node=NODES[eventname][0]))
+
 
 @app.route('/charts/<eventname>/<node>/')
 @headers({'Cache-Control':'public, max-age=360'})
 def node_chart(eventname, node):
 	if not eventname in NODES.keys() or not node in NODES[eventname]:
 		abort(404)
-	return render_template('base.html', eventname=eventname, node=node)
+
+	events = reversed(NODES.keys())
+	return render_template('base.html', eventname=eventname, node=node, events=events, nodes=NODES)
 
 
 # Json stuff

@@ -1,7 +1,7 @@
 @font-face {
   font-family: "DejaVu Sans";
-  src: url("/css/dejavu-sans-ttf/DejaVuSans.eot");
-  src: url("/css/dejavu-sans-ttf/DejaVuSans.eot?#iefix") format("embedded-opentype"), url("/css/dejavu-sans-ttf/DejaVuSans.svg#DejaVu Sans") format("svg"), url("/css/dejavu-sans-ttf/DejaVuSans.woff") format("woff"), url("/css/dejavu-sans-ttf/DejaVuSans.ttf") format("truetype");
+  src: url("/static/css/dejavu-sans-ttf/DejaVuSans.eot");
+  src: url("/static/css/dejavu-sans-ttf/DejaVuSans.eot?#iefix") format("embedded-opentype"), url("/static/css/dejavu-sans-ttf/DejaVuSans.svg#DejaVu Sans") format("svg"), url("/static/css/dejavu-sans-ttf/DejaVuSans.woff") format("woff"), url("/static/css/dejavu-sans-ttf/DejaVuSans.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
@@ -28,7 +28,27 @@ body {
   background-color: #303030;
   padding: 3px;
   text-align: center;
-  font-size: 12px; }
+  font-size: 11px; }
+
+#menu {
+  margin-top: 4px;
+  margin-right: 4px;
+  border-top-color: #c0ba59;
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-bottom-color: #c0ba59;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  background-color: #303030; }
+  #menu .pure-menu-link {
+    color: #ffffff;
+    background-color: #303030; }
+    #menu .pure-menu-link:visited {
+      color: #ffffff; }
+    #menu .pure-menu-link:hover {
+      color: #ffffff; }
+    #menu .pure-menu-link:hover {
+      background-color: #636363; }
 
 .uppercontainer {
   margin-top: 4px;

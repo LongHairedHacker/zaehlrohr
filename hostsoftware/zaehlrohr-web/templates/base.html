@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Zählrohr statistics for {{node}} at {{eventname}}</title>
@@ -12,22 +12,45 @@
 
 </head>
 <body>
-
 <div id="container">
 	<div id="header">
-		<div class="pure-g-r">
-			<div class="pure-u-1-5">
+		<div class="pure-g">
+			<div class="pure-u-1-3">
 				<img src="/static/logos/{{eventname}}/logo.png"/>
 			</div>
-			<div class="pure-u-3-5">
+			<div class="pure-u-1-3">
 				<h1>Zählrohr statistics for {{node}} at {{eventname}}</h1>
 			</div>
-			<div class="pure-u-1-5">
+			<div class="pure-u-1-3">
 				<img src="/static/logos/{{eventname}}/logo_event.png"/>
 			</div>
 		</div>
 	</div>
-	<div class="pure-g-r">
+	<div id="menu">
+	<div class="pure-menu pure-menu-horizontal">
+		<ul class="pure-menu-list">
+		{% for cur_event in events %}
+			<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+				<a class="pure-menu-link"
+					href="{{  url_for('event_redirect', eventname=cur_event) }}">
+					{{cur_event}}
+				</a>
+				<ul class="pure-menu-children">
+					{% for cur_node in nodes[cur_event] %}
+					<li class="pure-menu-item">
+						<a class="pure-menu-link"
+							href="{{ url_for('node_chart', eventname=cur_event, node=cur_node) }}">
+								{{cur_node}}
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+	<div class="pure-g">
 		<div class="pure-u-2-3">
 			<div class="uppercontainer">
 				<div id="capsule_chart"></div>
@@ -36,7 +59,7 @@
 		<div class="pure-u-1-3">
 			<div class="uppercontainer textcontainer">
 			<h2>Processed Capsules</h2>
-			<div class="pure-g-r">
+			<div class="pure-g">
 				<div class="pure-u-1-3">
 					<i class="icon-circle-arrow-down"></i>
 					Received:
@@ -45,7 +68,7 @@
 					<div id="received_capsules"></div>
 				</div>
 			</div>
-			<div class="pure-g-r">
+			<div class="pure-g">
 				<div class="pure-u-1-3">
 					<i class="icon-circle-arrow-up"></i>
 					Sent:
@@ -58,16 +81,17 @@
 			</div>
 		</div>
 	</div>
-	<div class="pure-g-r">
+
+	<div class="pure-g">
 		<div class="pure-u-2-3">
 			<div class="lowercontainer">
-				<div  id="velocity_chart"></div>	
+				<div  id="velocity_chart"></div>
 			</div>
 		</div>
 		<div class="pure-u-1-3">
 			<div class="lowercontainer textcontainer">
 				<h2>Capsule velocities</h2>
-				<div class="pure-g-r">
+				<div class="pure-g">
 					<div class="pure-u-2-3">
 						<i class="icon-arrow-down"></i>
 						Minimum received:
@@ -76,7 +100,7 @@
 						<div id="min_received_velocity"></div>
 					</div>
 				</div>
-				<div class="pure-g-r">
+				<div class="pure-g">
 					<div class="pure-u-2-3">
 						<i class="icon-arrow-up"></i>
 						Minimum sent:
@@ -86,7 +110,7 @@
 					</div>
 				</div>
 				<br/>
-				<div class="pure-g-r">
+				<div class="pure-g">
 					<div class="pure-u-2-3">
 						<i class="icon-circle-arrow-down"></i>
 						Maximum received:
@@ -95,7 +119,7 @@
 						<div id="max_received_velocity"></div>
 					</div>
 				</div>
-				<div class="pure-g-r">
+				<div class="pure-g">
 					<div class="pure-u-2-3">
 						<i class="icon-circle-arrow-up"></i>
 						Maximum sent:
@@ -110,9 +134,9 @@
 	</div>
 	<div id="footer">
 		<br>
-		Zählrohr statistics provided by Sebastian<br/> 
+		Zählrohr statistics provided by Sebastian<br/>
 		Email: <b>sebastian at sebastians hyphen site dot de</b><br/>
-		Special thanks the to Seidenstrasse Team for setting up the installation and 
+		Special thanks the to Seidenstrasse Team for setting up the installation and
 		to my friends at <a href="https://www.chaos-inkl.de/">ChaosInKL</a> for helping me fix the hardware.<br/>
 		<br/>
 		All <a href="https://github.com/LongHairedHacker/zaehlrohr">Zaehlrohr</a> sources are avaiable on Github.<br/>
@@ -160,7 +184,7 @@
 				{name: 'Sent', data: []}
 			]
 		});
-		
+
 		$('#velocity_chart').highcharts({
 			chart: {
 				type: 'line'
@@ -201,7 +225,7 @@
 
 				var receivedCapsuleSeriesData = [];
 				var sentCapsuleSeriesData = [];
-			
+
 				var maxVelocitySeriesData = [];
 				var avgVelocitySeriesData = [];
 				var minVelocitySeriesData = [];
@@ -210,7 +234,7 @@
 				var sentCapsules = 0;
 
 				var maxReceivedVelocity = data[0].in_max_velocity;
-				var maxSentVelocity = data[0].out_max_velocity;			
+				var maxSentVelocity = data[0].out_max_velocity;
 				var minReceivedVelocity = data[0].in_max_velocity;
 				var minSentVelocity = data[0].out_max_velocity;
 
@@ -224,10 +248,10 @@
 
 					receivedCapsules += data[i].incoming;
 				 	sentCapsules += data[i].outgoing;
-	
+
 					if(data[i].incoming > 0) {
 				 		maxReceivedVelocity = Math.max(data[i].in_max_velocity, maxReceivedVelocity);
-						minReceivedVelocity = Math.min(data[i].in_min_velocity, minReceivedVelocity);	
+						minReceivedVelocity = Math.min(data[i].in_min_velocity, minReceivedVelocity);
 				 	}
 
 					if(data[i].outgoing > 0) {
@@ -235,7 +259,7 @@
 						minSentVelocity = Math.min(data[i].out_min_velocity, minSentVelocity);
 					}
 				}
-				
+
 				capsuleChart.series[0].setData(receivedCapsuleSeriesData, false);
 				capsuleChart.series[1].setData(sentCapsuleSeriesData, false)
 				capsuleChart.redraw();
@@ -247,7 +271,7 @@
 
 				$('#received_capsules').text(receivedCapsules + ' Capsules');
 				$('#sent_capsules').text(sentCapsules + ' Capsules');
-				
+
 				$('#min_received_velocity').text(minReceivedVelocity.toFixed(3) + ' m/s');
 				$('#min_sent_velocity').text(minSentVelocity.toFixed(3) + ' m/s');
 				$('#max_received_velocity').text(maxReceivedVelocity.toFixed(3) + ' m/s');
@@ -260,7 +284,7 @@
 		};
 
 		updateCharts();
-		
+
 	});
 </script>
 </body>

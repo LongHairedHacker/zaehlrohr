@@ -15,11 +15,11 @@ $ccc : #45b964;
 
 @font-face {
 	font-family: "DejaVu Sans";
-	src: url('/css/dejavu-sans-ttf/DejaVuSans.eot');
-	src: url('/css/dejavu-sans-ttf/DejaVuSans.eot?#iefix') format('embedded-opentype'),
-	url('/css/dejavu-sans-ttf/DejaVuSans.svg#DejaVu Sans') format('svg'),
-	url('/css/dejavu-sans-ttf/DejaVuSans.woff') format('woff'),
-	url('/css/dejavu-sans-ttf/DejaVuSans.ttf') format('truetype');
+	src: url('/static/css/dejavu-sans-ttf/DejaVuSans.eot');
+	src: url('/static/css/dejavu-sans-ttf/DejaVuSans.eot?#iefix') format('embedded-opentype'),
+	url('/static/css/dejavu-sans-ttf/DejaVuSans.svg#DejaVu Sans') format('svg'),
+	url('/static/css/dejavu-sans-ttf/DejaVuSans.woff') format('woff'),
+	url('/static/css/dejavu-sans-ttf/DejaVuSans.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -80,7 +80,21 @@ body{
 	@include colorborders($accent, $accent, 3px);
 	padding : 3px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 11px;
+}
+
+#menu {
+	@include gridcontainer;
+	@include colorborders($fail, $fail, 3px);
+
+	.pure-menu-link {
+		@include fixlinkcolor(#ffffff);
+		background-color: $boxBackground;
+
+		&:hover {
+			background-color: lighten($boxBackground, 20%);
+		}
+	}
 }
 
 .uppercontainer {
