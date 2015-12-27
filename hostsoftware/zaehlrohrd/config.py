@@ -10,12 +10,8 @@ class Config(object):
 	connection_string = "dbname=zaehlrohr user=zaehlrohr"
 
 	distance = 0.5
-	tubes = [('CentralNode', 'FoodHackingVillage'), 
-				('CentralNode', 'metalab'),
-				('CentralNode', 'Roadside'),
-				('CentralNode', 'Milliways')]
-
-
-
-
-
+	tubes = [('CentralNode', 'ChaosInkl'),
+				('CentralNode', 'Watchtower'),
+				('CentralNode', 'c3pb'),
+				('CentralNode', 'Sendezentrum'),
+				('CentralNode', 'ctfl')]
