@@ -6,7 +6,7 @@
 
 #include "fifo.h"
 
-#define TUBECOUNT 6 
+#define TUBECOUNT 5
 
 typedef struct {
 	volatile uint8_t *pin;
@@ -18,8 +18,8 @@ typedef struct {
 extern const Tube tube[TUBECOUNT];
 
 enum TubeStatus {
-	IDLE, 
-	TRIG1, 
+	IDLE,
+	TRIG1,
 	TRIG2
 };
 
