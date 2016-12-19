@@ -5,7 +5,9 @@ import os
 import sys
 
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)
+
+sys.path.append(os.path.join(BASE_DIR, '../common/psql'))
 
 sys.stdout = sys.stderr
 # Add the virtual Python environment site-packages directory to the path
