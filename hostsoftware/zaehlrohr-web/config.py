@@ -1,5 +1,7 @@
 #!/bin/env python2
 
+connection_string = "dbname=zaehlrohr user=zaehlrohr"
+
 CURRENT_EVENT = 'CCCAMP15'
 DEFAULT_NODE = 'CentralNode'
 

@@ -61,6 +61,6 @@ def capsules(eventname, node=None):
 
 
 if __name__ == '__main__':
-	dbman = DBManager("dbname=zaehlrohr user=zaehlrohr", CURRENT_EVENT)
+	dbman = DBManager(connectionString, CURRENT_EVENT)
 	app.debug = True
 	app.run()
