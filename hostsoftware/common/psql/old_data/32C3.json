@@ -1,6 +1,4 @@
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>#header + #content > #left > #rlblock_left
-{display:none !important;}</style><link rel="stylesheet" type="text/css" href="raw_files/socialwidgets.css"></head><body>[{"origin":
+[{"origin":
  "c3pb", "destination": "CentralNode", "event": "32C3", "time": 
 1451260423, "velocity": 21.7391, "id": 2393}, {"origin": "CentralNode", 
 "destination": "c3pb", "event": "32C3", "time": 1451262266, "velocity": 
@@ -23,4 +21,4 @@
 "velocity": 3.24675, "id": 2403}, {"origin": "c3pb", "destination": 
 "CentralNode", "event": "32C3", "time": 1451322661, "velocity": 3.87597,
  "id": 2404}, {"origin": "CentralNode", "destination": "c3pb", "event": 
-"32C3", "time": 1451328467, "velocity": 3.40136, "id": 2405}]</body></html>
+"32C3", "time": 1451328467, "velocity": 3.40136, "id": 2405}]
