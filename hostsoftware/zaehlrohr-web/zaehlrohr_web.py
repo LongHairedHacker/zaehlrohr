@@ -15,6 +15,8 @@ from dbmanager import DBManager
 
 from config import *
 
+dbman = DBManager(connectionString, CURRENT_EVENT)
+
 @app.route('/')
 @headers({'Cache-Control':'public, max-age=360'})
 def index_redirect():
@@ -60,7 +62,7 @@ def capsules(eventname, node=None):
 	return data
 
 
-if __name__ == '__main__':
-	dbman = DBManager(connectionString, CURRENT_EVENT)
+
+if __name__ == '__main__'
 	app.debug = True
 	app.run()
