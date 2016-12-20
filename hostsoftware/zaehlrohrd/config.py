@@ -6,7 +6,7 @@ class Config(object):
 	timeout = 0.100 	#100ms
 	resync_threshold = 5
 
-	eventname = "CCCAMP2015"
+	eventname = "32C3"
 	connection_string = "dbname=zaehlrohr user=zaehlrohr"
 
 	distance = 0.5
