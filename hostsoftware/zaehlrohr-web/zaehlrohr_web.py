@@ -15,7 +15,7 @@ from dbmanager import DBManager
 
 from config import *
 
-dbman = DBManager(connectionString, CURRENT_EVENT)
+dbman = DBManager(connection_string, CURRENT_EVENT)
 
 @app.route('/')
 @headers({'Cache-Control':'public, max-age=360'})
@@ -63,6 +63,6 @@ def capsules(eventname, node=None):
 
 
 
-if __name__ == '__main__'
+if __name__ == '__main__':
 	app.debug = True
 	app.run()

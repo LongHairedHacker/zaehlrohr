@@ -15,9 +15,13 @@ import site
 site.addsitedir(os.path.join(BASE_DIR,'virtenv/lib/python2.7/site-packages'))
 sys.path.insert(0,os.path.join(BASE_DIR,'virtenv/lib/python2.7/site-packages'))
 
+
 from flup.server.fcgi import WSGIServer
 from werkzeug.contrib.fixers import CGIRootFix
 from zaehlrohr_web import app
+
+import logging
+logging.basicConfig(filename=os.path.join(BASE_DIR,'error.log'),level=logging.ERROR)
 
 app = CGIRootFix(app, app_root='/')
 WSGIServer(app).run()
