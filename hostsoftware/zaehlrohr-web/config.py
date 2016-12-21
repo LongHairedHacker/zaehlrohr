@@ -2,7 +2,7 @@
 
 connection_string = "dbname=zaehlrohr user=zaehlrohr"
 
-CURRENT_EVENT = '32C3'
+CURRENT_EVENT = '33C3'
 DEFAULT_NODE = 'CentralNode'
 
 NODES = {
@@ -10,4 +10,5 @@ NODES = {
 	'31C3': ['CentralNode', 'HardwareHackingArea', 'SoftwareAndOpenSource', 'Comix', 'Milliways', 'Netze', 'BallPit'],
 	'CCCAMP15': ['CentralNode', 'FoodHackingVillage', 'metalab', 'Roadside', 'Milliways'],
 	'32C3' : ['CentralNode', 'ChaosInkl', 'Sendezentrum', 'Watchtower', 'c3pb', 'ctfl'],
+	'33C3' : ['CentralNode',]
 }

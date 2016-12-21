@@ -1,0 +1,133 @@
+$background : #000000;
+
+$boxBackground : #1e1e1d;
+
+$purple: #75519c;
+$cyan: #009a93;
+$blue: #007cc4;
+$yellow: #fff375;
+$white: #ffffff;
+$green: #a3c616;
+
+@font-face {
+	font-family: "DejaVu Sans";
+	src: url('/static/css/dejavu-sans-ttf/DejaVuSans.eot');
+	src: url('/static/css/dejavu-sans-ttf/DejaVuSans.eot?#iefix') format('embedded-opentype'),
+	url('/static/css/dejavu-sans-ttf/DejaVuSans.svg#DejaVu Sans') format('svg'),
+	url('/static/css/dejavu-sans-ttf/DejaVuSans.woff') format('woff'),
+	url('/static/css/dejavu-sans-ttf/DejaVuSans.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@mixin gridcontainer {
+	margin: {
+		top: 4px;
+		right: 4px;
+	}
+}
+
+@mixin colorborders($colorTop, $colorBottom, $width) {
+	border: {
+		top: {
+			color: $colorTop;
+			width: $width;
+			style: solid;
+		}
+		bottom: {
+			color: $colorBottom;
+			width: $width;
+			style: solid;
+		}
+	}
+	background-color: $boxBackground;
+}
+
+@mixin fixlinkcolor($color) {
+		color: $color;
+
+		&:visited {
+			color: $color;
+		}
+
+		&:hover {
+			color: $color;
+		}
+}
+
+
+body{
+	font-family: "DejaVu Sans";
+	color: #ffffff;
+	background-color: $background;
+	background-image: url('background.png');
+	background-repeat: repeat;
+}
+
+#container {
+	margin: 4px;
+}
+
+
+#header {
+	@include gridcontainer;
+	@include colorborders($purple, $purple, 3px);
+	padding : 3px;
+	text-align: center;
+	font-size: 11px;
+}
+
+#menu {
+	@include gridcontainer;
+	@include colorborders($cyan, $cyan, 3px);
+
+	.pure-menu-link {
+		@include fixlinkcolor(#ffffff);
+		background-color: $boxBackground;
+
+		&:hover {
+			background-color: lighten($boxBackground, 20%);
+		}
+	}
+}
+
+.uppercontainer {
+	@include gridcontainer;
+	@include colorborders($cyan, $cyan, 3px);
+}
+
+.lowercontainer {
+	@include gridcontainer;
+	@include colorborders($cyan, $cyan,3px);
+}
+
+#footer {
+	@include gridcontainer;
+	@include colorborders($yellow, $yellow, 3px);
+	padding: 6px;
+}
+
+
+
+.textcontainer {
+	padding: {
+			top: 4px;
+			left: 4px;
+	}
+	font-size: 20px;
+}
+
+
+a {
+		text-decoration: none;
+		color: $blue;
+
+		&:visited {
+			color: $green;
+		}
+
+		&:hover {
+			color: $white;
+		}
+	}
