@@ -18,10 +18,10 @@ body {
 #header {
   margin-top: 4px;
   margin-right: 4px;
-  border-top-color: #75519c;
+  border-top-color: #009a93;
   border-top-width: 3px;
   border-top-style: solid;
-  border-bottom-color: #75519c;
+  border-bottom-color: #009a93;
   border-bottom-width: 3px;
   border-bottom-style: solid;
   background-color: #1e1e1d;
@@ -74,10 +74,10 @@ body {
 #footer {
   margin-top: 4px;
   margin-right: 4px;
-  border-top-color: #fff375;
+  border-top-color: #75519c;
   border-top-width: 3px;
   border-top-style: solid;
-  border-bottom-color: #fff375;
+  border-bottom-color: #75519c;
   border-bottom-width: 3px;
   border-bottom-style: solid;
   background-color: #1e1e1d;

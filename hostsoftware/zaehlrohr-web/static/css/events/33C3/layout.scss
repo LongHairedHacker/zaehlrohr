@@ -72,7 +72,7 @@ body{
 
 #header {
 	@include gridcontainer;
-	@include colorborders($purple, $purple, 3px);
+	@include colorborders($cyan, $cyan, 3px);
 	padding : 3px;
 	text-align: center;
 	font-size: 11px;
@@ -104,7 +104,7 @@ body{
 
 #footer {
 	@include gridcontainer;
-	@include colorborders($yellow, $yellow, 3px);
+	@include colorborders($purple, $purple, 3px);
 	padding: 6px;
 }
 
