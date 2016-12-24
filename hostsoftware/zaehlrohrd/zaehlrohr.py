@@ -2,6 +2,7 @@
 import sys
 import time
 import signal
+from datetime import datetime
 
 sys.path.append('../common/psql')
 
@@ -32,6 +33,10 @@ def make_distance_matrix(distances):
         matrix[b][a] = distance
 
     return matrix
+
+
+def print_event(event):
+	print "%s -> %s %s %s" % (event['origin'], event['destination'], event['velocity'], str(datetime.fromtimestamp(event['time'])))
 
 
 
@@ -73,17 +78,23 @@ def main():
             last_node_time = time.time()
 
         elif msg[MSG_ID] == MSG_TYPE_DETECTED:
-            if last_node_id == None:
+            if last_node_id != None:
                 current_node_id = msg[MSG_SRC]
-                delta_time = time.time() - last_node_time
+                current_time = time.time()
+                delta_time = current_time - last_node_time
 
-                event = {
-                    'origin' : NODE_NAMES[last_node_id],
-                    'destination': NODE_NAMES[current_node_id],
-                    'velocity' : distances[last_node_id][current_node_id] / delta_time
-                }
+                if last_node_id in distances and current_node_id in distances[last_node_id]:
+                    event = {
+                        'origin' : NODE_NAMES[last_node_id],
+                        'destination': NODE_NAMES[current_node_id],
+                        'velocity' : distances[last_node_id][current_node_id] / delta_time,
+                        'time' : current_time
+                    }
 
-                dbman.insert_event(event)
+                    print_event(event)
+                    dbman.insert_event(event)
+                else:
+                    print "[Error] %s -> %s is not in distance matrix" % (NODE_NAMES[last_node_id], NODE_NAMES[current_node_id])
 
             last_node_id = msg[MSG_SRC]
             last_node_time = time.time()
