@@ -1,6 +1,6 @@
 Flask==1.0
 Flask-Headers==1.0
-Jinja2==2.8
+Jinja2==2.11.3
 MarkupSafe==0.23
 Werkzeug==0.15.3
 click==6.6
